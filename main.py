@@ -82,3 +82,33 @@ if b == 'Да':
     print('Спасибо за заполнение!')
 else:
     print('Хорошо, до свидания!')
+
+#Доп.задание ------------------------------------------
+class H:
+    def __init__(self, h):
+        self.h = h
+
+    def __add__(self, o):
+        return self.h + o.h
+
+a1 = H(1)
+a2 = H(2)
+a3 = H("Merry")
+a4 = H("Christmas")
+
+print(H.__add__(a1, a2))
+print(a3.__add__(a4))
+
+print('Введите строку или целое число: ')
+inp1 = input()
+K1 = H(inp1)
+print('Введите строку или целое число: ')
+inp2 = input()
+K2 = H(inp2)
+if inp1.isdigit():
+    K1 = H(int(inp1))
+    K2 = H(int(inp2))
+if inp1.isdigit()+inp2.isdigit():
+    print('Вы ввели данные разного типа, поэтому мы сложим их как строки: ')
+print(H.__add__(K1, K2))
+
