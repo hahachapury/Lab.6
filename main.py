@@ -1,3 +1,4 @@
+
 class Lamp:
     def __init__(self, name, power, consump, life):
         self.name = name
@@ -44,11 +45,18 @@ Lamp1.Work()
 Lamp1.Rat()
 print('\n')
 
-Lamp2 = Projector('Jazz', 500, 50, 87600, 700)
+Lamp2 = Projector('Jazz', 500, 50, 87600, 0.7)
 Lamp2.Info()
 Lamp2.Work()
 Lamp2.Rat()
 print('\n')
+
+class H():
+    def __init__(self, h):
+        self.h = h
+
+    def __add__(self, o):
+        return self.h + o.h
 
 print('Хотите внести информацию о модели?')
 b = input('(Да или Нет): ')
@@ -62,6 +70,19 @@ if b == 'Да':
         p = int(input('Мощность освещения (Вт): '))
         c = int(input('Потребляемая энергия (Вт/ч): '))
         l = int(input('Срок службы (ч): '))
+        print('Хотите увеличить данные модели?')
+        k = input('(Да или Нет): ')
+        if k == 'Да':
+            print('Какие данные хотите увеличить?')
+            d = input("1 - мощность освещения, 2 - потребляемая энергия: ")
+            print('На сколько хотите увеличить?')
+            f = H(int(input('Введите целое число: ')))
+            if d == '1':
+                p = int(H.__add__(H(p), f))
+            else:
+                c = int(H.__add__(H(c), f))
+        else:
+            print('Хорошо')
         if a == 1:
             l2 = int(input('Длина изделия (мм): '))
             L = Bulb(n,p, c, l, l2)
@@ -82,33 +103,4 @@ if b == 'Да':
     print('Спасибо за заполнение!')
 else:
     print('Хорошо, до свидания!')
-
-#Доп.задание ------------------------------------------
-class H:
-    def __init__(self, h):
-        self.h = h
-
-    def __add__(self, o):
-        return self.h + o.h
-
-a1 = H(1)
-a2 = H(2)
-a3 = H("Merry")
-a4 = H("Christmas")
-
-print(H.__add__(a1, a2))
-print(a3.__add__(a4))
-
-print('Введите строку или целое число: ')
-inp1 = input()
-K1 = H(inp1)
-print('Введите строку или целое число: ')
-inp2 = input()
-K2 = H(inp2)
-if inp1.isdigit():
-    K1 = H(int(inp1))
-    K2 = H(int(inp2))
-if inp1.isdigit()+inp2.isdigit():
-    print('Вы ввели данные разного типа, поэтому мы сложим их как строки: ')
-print(H.__add__(K1, K2))
 
